@@ -53,11 +53,11 @@ class Post(models.Model):
     )
     category_type = models.CharField(max_length=2, choices=CATEGORY_CHOICES, default=ARTICLE,
                                      verbose_name='Тип поста')
-    dateCreation = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания поста')
+    dateCreation = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
     postCategory = models.ManyToManyField(Category, through='PostCategory', verbose_name='Рубрика поста')
     title = models.CharField(max_length=128, verbose_name='Заголовок поста')
     text = models.TextField(verbose_name='Текст')
-    rating = models.SmallIntegerField(default=0)
+    rating = models.SmallIntegerField(default=0, verbose_name='Рейтинг')
 
     def __str__(self):
         return f'{self.title.title()}: {self.text[:100]}'
@@ -84,6 +84,10 @@ class Post(models.Model):
 class PostCategory(models.Model):
     postThrough = models.ForeignKey(Post, on_delete=models.CASCADE)
     categoryThrough = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Рубрика'
+        verbose_name_plural = 'Рубрики'
 
 
 class Comment (models.Model):

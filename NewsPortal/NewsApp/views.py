@@ -2,9 +2,10 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from datetime import datetime
 from django.shortcuts import redirect, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+
+from datetime import datetime
 from .models import Post, Category
 from .filters import PostFilter
 from .forms import PostForm
