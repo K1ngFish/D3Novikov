@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'debug_toolbar',
+    
     'django.contrib.sites',
     'django.contrib.flatpages',
 
@@ -60,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'NewsPortal.urls'
@@ -174,3 +178,8 @@ CELERY_RESULT_BACKEND = 'redis://default:kc2hNDiYppdAeutRoYpXylitDAfPTuff@redis-
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
+
+# для django debug toolbar
+INTERNAL_IPS = [
+    '127.0.0.1',
+]

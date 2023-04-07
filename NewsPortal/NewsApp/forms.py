@@ -1,6 +1,6 @@
 from django.core.exceptions import ValidationError
 from django import forms
-from .models import Post
+from .models import Post, PostCategory
 
 
 class PostForm(forms.ModelForm):
@@ -32,5 +32,6 @@ class PostForm(forms.ModelForm):
                 'Название новости должно начинаться с заглавной буквы'
             )
         return cleaned_data
+
 
 
