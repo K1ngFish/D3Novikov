@@ -158,7 +158,7 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 ACCOUNT_FORMS = {"signup": "accounts.forms.CustomSignupForm"}
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
 EMAIL_HOST_USER = "dev3np0rt"
@@ -169,7 +169,6 @@ EMAIL_USE_SSL = True
 DEFAULT_FROM_EMAIL = "dev3np0rt@yandex.ru"
 
 SITE_URL = 'http://127.0.0.1:8000'
-
 
 APSCHEDULER_DATETIME_FORMAT = 'N j, Y, f:s a'
 APSCHEDULER_RUN_NOW_TIMEOUT = 25
@@ -185,103 +184,119 @@ INTERNAL_IPS = [
     '127.0.0.1',
 ]
 
+MAIL_ADMINS = [('admin', 'dev3np0rt@yandex.ru')]
 
 LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'standard': {
-            'format': '%(asctime)s %(levelname)s %(name)s %(message)s'
-        },
-        'with_pathname': {
-            'format': '%(asctime)s %(levelname)s %(pathname)s %(message)s'
-        },
-        'with_exc_info': {
-            'format': '%(asctime)s %(levelname)s %(name)s %(message)s\n%(exc_info)s'
-        },
-        'security': {
-            'format': '%(asctime)s %(levelname)s %(name)s %(message)s'
-        }
-    },
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-            'level': 'DEBUG',
-            'formatter': 'standard',
-            'filters': ['debug_true']
-        },
-        'general': {
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': '~/Desktop/logs/general.log',
-            'maxBytes': 1024 * 1024 * 5,  # 5 MB
-            'backupCount': 5,
-            'level': 'INFO',
-            'formatter': 'standard',
-            'filters': ['debug_false']
-        },
-        'errors': {
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': '~/Desktop/logs/errors.log',
-            'maxBytes': 1024 * 1024 * 5,  # 5 MB
-            'backupCount': 5,
-            'level': 'ERROR',
-            'formatter': 'with_exc_info',
-            'filters': ['error_and_critical', 'debug_false']
-        },
-        'security': {
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': '~/Desktop/logs/security.log',
-            'maxBytes': 1024 * 1024 * 5,  # 5 MB
-            'backupCount': 5,
-            'level': 'INFO',
-            'formatter': 'security',
-            'filters': ['debug_false']
-        },
-        'email': {
-            'class': 'django.utils.log.AdminEmailHandler',
-            'level': 'ERROR',
-            'include_html': False,
-            'formatter': 'with_pathname',
-            'filters': ['request_and_server', 'debug_false']
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console', 'general', 'errors', 'security', 'email'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-        'django.request': {
-            'handlers': ['errors', 'email'],
-            'level': 'ERROR',
-            'propagate': False,
+	'version': 1,
+	'disable_existing_loggers': False,
+	'loggers': {
+		'django': {
+		'handlers': ['console', 'general', 'errors', 'security', 'email'],
+		'level': 'DEBUG',
+		'propagate': True,
+		},
+		'django.request': {
+        'handlers': ['errors', 'email'],
+        'level': 'ERROR',
+        'propagate': False,
         },
         'django.server': {
-            'handlers': ['errors', 'email'],
-            'level': 'ERROR',
-            'propagate': False,
+        'handlers': ['errors', 'email'],
+        'level': 'ERROR',
+        'propagate': False,
         },
         'django.template': {
-            'handlers': ['errors'],
-            'level': 'ERROR',
-            'propagate': False,
+        'handlers': ['errors'],
+        'level': 'ERROR',
+        'propagate': False,
         },
         'django.db.backends': {
-            'handlers': ['errors'],
-            'level': 'ERROR',
-            'propagate': False,
-        },
-        'django.security': {
-            'handlers': ['security', 'email'],
-            'level': 'INFO',
-            'propagate': False,
-        },
-    },
-    'filters': {
-        'debug_true': {
-            '()': 'django.utils.log.RequireDebugTrue',
-        },
-    }
-}
+        'handlers': ['errors'],
+        'level': 'ERROR',
+        'propagate': False,
+		},
+		'django.security': {
+		'handlers': ['security', 'email'],
+		'level': 'ERROR',
+		'propagate': False
+		},
 
+	},
+	'handlers': {
+		'console': {
+			'class': 'logging.StreamHandler',
+			'level':'DEBUG',
+			'formatter': 'standard',
+			'filters': ['debug_true']
+			},
+		'warnings': {
+			'class': 'logging.StreamHandler',
+			'level': 'WARNING',
+			'formatter': 'with_pathname',
+			'filters': ['debug_true']
+			},
+		'errors_console': {
+			'class': 'logging.StreamHandler',
+			'level': 'ERROR',
+			'formatter': 'with_excinfo',
+			'filters': ['debug_true']
+			},
+		'general': {
+		    'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'general.log',
+            'level': 'INFO',
+            'formatter': 'standard',
+            'filters': ['debug_false']
+			},
+		'errors': {
+		    'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'errors.log',
+            'level': 'ERROR',
+            'formatter': 'with_excinfo',
+            'filters': ['debug_true']
+			},
+		'security': {
+		    'class': 'logging.handlers.RotatingFileHandler',
+            'filename': 'security.log',
+            'level': 'INFO',
+            'formatter': 'security',
+            'filters': ['debug_true']
+			},
+		'mail_admins': {
+        	'class': 'django.utils.log.AdminEmailHandler',
+            'level': 'ERROR',
+            'include_html': True,
+        },
+	},
+	'formatters': {
+		'standard': {
+			'format': '{asctime} {levelname} {message}',
+			'datefmt': '%Y.%m.%d %H.%M.%S',
+			'style': '{',
+		},
+		'with_pathname': {
+			'format': '{asctime} {levelname} {message} {pathname}',
+			'datefmt': '%Y.%m.%d %H.%M.%S',
+			'style': '{',
+		},
+		'with_excinfo': {
+			'format': '{asctime} {levelname} {message} {pathname} {exc_info}',
+			'datefmt': '%Y.%m.%d %H.%M.%S',
+			'style': '{',
+		},
+		'security': {
+			'format': '{asctime} {levelname} {name} {message}',
+			'datefmt': '%Y.%m.%d %H.%M.%S',
+			'style': '{',
+		},
+	},
+	'filters': {
+		'debug_true': {
+			'()':'django.utils.log.RequireDebugTrue',
+		},
+		'debug_false': {
+			'()':'django.utils.log.RequireDebugFalse',
+		}
+	}
+}
 
