@@ -184,24 +184,24 @@ INTERNAL_IPS = [
     '127.0.0.1',
 ]
 
-MAIL_ADMINS = [('admin', 'dev3np0rt@yandex.ru')]
+ADMINS = [('admin', 'dev3np0rt@yandex.ru')]
 
 LOGGING = {
 	'version': 1,
 	'disable_existing_loggers': False,
 	'loggers': {
 		'django': {
-		'handlers': ['console', 'general', 'errors', 'security', 'email'],
+		'handlers': ['console', 'general', 'errors', 'security', 'mail_admins'],
 		'level': 'DEBUG',
 		'propagate': True,
 		},
 		'django.request': {
-        'handlers': ['errors', 'email'],
+        'handlers': ['errors', 'mail_admins'],
         'level': 'ERROR',
         'propagate': False,
         },
         'django.server': {
-        'handlers': ['errors', 'email'],
+        'handlers': ['errors', 'mail_admins'],
         'level': 'ERROR',
         'propagate': False,
         },
@@ -216,7 +216,7 @@ LOGGING = {
         'propagate': False,
 		},
 		'django.security': {
-		'handlers': ['security', 'email'],
+		'handlers': ['security', 'mail_admins'],
 		'level': 'ERROR',
 		'propagate': False
 		},
