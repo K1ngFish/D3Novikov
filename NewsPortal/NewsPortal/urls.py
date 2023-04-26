@@ -27,6 +27,7 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path('posts/', include('NewsApp.urls')),
     path('subscriptions/', include('subscriptions.urls')),
+    path('i18n/', include('django.conf.urls.i18n')),
 ]
 
 if settings.DEBUG:

@@ -2,15 +2,16 @@
 
 {% load custom_filters %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}
 Posts
 {% endblock title %}
 
 {% block content %}
-   <h2>Новости и статьи</h2>
+   <h2>{% trans 'Новости и статьи' %}</h2>
    <h3>{{ time_now|date:'M d Y' }}</h3>
-   <h5>Всего постов: {{ paginator.count }} </h5>
+   <h5>{% trans 'Всего постов' %}: {{ paginator.count }} </h5>
    <!-- <h4> {{ open_vacancies|default_if_none:"Новые вакансии пока не появились!" }} </h4> -->
    <hr>
 
@@ -33,7 +34,7 @@ Posts
     <table class = "text">
         <tr>
         <td> <p style="text-align: left;"> <a href = "{% url 'post_detail' pk=post.id %}"> {{ post.title|censor }} </a> ({{ post.author }}) </p> </td>
-        <td class="rightcol"><p style="text-align: justify; font-size: 12px"> Рейтинг: {{ post.rating }} </p> </td>
+        <td class="rightcol"><p style="text-align: justify; font-size: 12px"> {% trans 'Рейтинг' %}: {{ post.rating }}</p> </td>
         </tr>
     </table>
 
@@ -44,8 +45,6 @@ Posts
             <a href="{% url 'category_list' cat.id %}"> {{ cat.name }} </a>
         {% endfor %}
 
-
-
        <!-- {% if perms.NewsApp.change_post %}
        <p style="text-align: left; font-size: 12px; line-height: 50%"> <a href="{% url 'post_update' pk=post.id %}">Изменить пост</a> </p>
        {% endif %}
@@ -55,12 +54,10 @@ Posts
         <hr>
 
    {% else %}
-   <h2> Будьте первым, кто опубликует пост! </h2>
+   <h2> {% trans 'Будьте первым, кто опубликует пост!' %} </h2>
 
    {% endif %}
    {% endfor %}
-
-
 
    <!-- Пагинация -->
 

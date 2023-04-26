@@ -1,14 +1,15 @@
 {% extends 'flatpages/default.html' %}
+{% load i18n %}
 
 {% load custom_filters %}
 
 {% block title %}
-Posts
+PPosts
 {% endblock title %}
 
 {% block content %}
 
-<h3> Поиск по сайту</h3>
+<h3> {% trans 'Поиск по сайту' %}</h3>
     <form action="" method="get">
        {{ filterset.form.as_p }}
        <input type="submit" value="Найти" />
@@ -27,21 +28,21 @@ Posts
         </p>
 
         <p style="text-align: justify;"> {{ post.dateCreation|date:'d.M.Y' }} </p>
-        <p style="text-align: justify;"> Автор: {{ post.author }} </p>
+        <p style="text-align: justify;"> {% trans 'Автор' %}: {{ post.author }} </p>
         <p style="text-align: justify;"> {{ post.text|truncatewords:20|censor }} </p>
-        <p style="text-align: justify; font-size: 15px"> Рейтинг поста: {{ post.rating }} </p>
+        <p style="text-align: justify; font-size: 15px"> {% trans 'Рейтинг поста' %}: {{ post.rating }} </p>
 
        {% if perms.NewsApp.change_post %}
-       <p style="text-align: left; font-size: 12px; line-height: 50%"> <a href="{% url 'post_update' pk=post.id %}">Изменить пост</a> </p>
+       <p style="text-align: left; font-size: 12px; line-height: 50%"> <a href="{% url 'post_update' pk=post.id %}">{% trans 'Изменить пост' %}</a> </p>
        {% endif %}
        {% if perms.NewsApp.delete_post %}
-       <p style="text-align: left; font-size: 12px; line-height: 50%"> <a href="{% url 'post_delete' pk=post.id %}">Удалить пост</a> </p>
+       <p style="text-align: left; font-size: 12px; line-height: 50%"> <a href="{% url 'post_delete' pk=post.id %}">{% trans 'Удалить пост' %}</a> </p>
        {% endif %}
         <hr>
            {% endfor %}
        </table>
    {% else %}
-       <h2>Будьте первым, кто опубликует пост :)</h2>
+       <h2>{% trans 'Будьте первым, кто опубликует пост :)' %}</h2>
    {% endif %}
 
    {% if page_obj.has_previous %}
