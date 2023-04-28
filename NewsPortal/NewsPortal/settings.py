@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -78,6 +79,8 @@ LANGUAGES = [
     ('en-us', 'English'),
     ('ru', 'Русский')
 ]
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
 
 TEMPLATES = [
     {

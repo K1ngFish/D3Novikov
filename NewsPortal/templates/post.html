@@ -1,6 +1,6 @@
 <!--  наследуемся от шаблона default.html, который мы создавали для flatpages -->
 {% extends 'flatpages/default.html' %}
-
+{% load i18n %}
 {% load custom_filters %}
 
 <!-- Название у нас будет Product -->
@@ -15,10 +15,10 @@ Product
 <p style="text-align: justify;"> {{ post.text|censor }} </p>
 
 {% if perms.NewsApp.change_post %}
-    <a href ="{% url 'post_update' pk=post.id %}" class ="btn btn-outline-primary btn-sm">Изменить пост</a>
+    <a href ="{% url 'post_update' pk=post.id %}" class ="btn btn-outline-primary btn-sm">{% trans 'Изменить пост' %}</a>
 {% endif %}
 {% if perms.NewsApp.delete_post %}
-    <a href="{% url 'post_delete' pk=post.id %}" class = "btn btn-outline-danger btn-sm">Удалить пост</a>
+    <a href="{% url 'post_delete' pk=post.id %}" class = "btn btn-outline-danger btn-sm">{% trans 'Удалить пост' %}</a>
 {% endif %}
 
 

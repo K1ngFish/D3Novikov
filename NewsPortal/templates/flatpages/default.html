@@ -51,8 +51,8 @@
                                 <input type="hidden" name="next" value="{{ redirect_to }}">
                                 {% get_current_language as LANGUAGE_CODE %}
                                 <select name="language" id="">
-                                    {% get_available_languages as LANGUAGES %} 
-                                    {% get_language_info_list for LANGUAGES as languages %} 
+                                    {% get_available_languages as LANGUAGES %}
+                                    {% get_language_info_list for LANGUAGES as languages %}
 
                                     {% for language in languages %}
                                         <option value="{{ language.code }}" {% if language.code == LANGUAGE_CODE %} selected {% endif %}>
@@ -62,6 +62,11 @@
                                 </select>
                                 <input type="submit" value="set">
                                 </form>
+                                {% for model in models %}
+                                <div class = 'models-class'>
+                                     {{ model.name }}
+                                </div>
+                                {% endfor %}
                             </div>
                             </li>
                         </ul>

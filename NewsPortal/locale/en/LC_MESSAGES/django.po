@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-26 19:41+0300\n"
+"POT-Creation-Date: 2023-04-28 19:34+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -69,8 +69,15 @@ msgstr "Log in"
 msgid "Зарегистрироваться"
 msgstr "Sign up"
 
+#: .\templates\post.html:18 .\templates\search.html:36
+msgid "Изменить пост"
+msgstr "Edit"
+
+#: .\templates\post.html:21 .\templates\search.html:39
+msgid "Удалить пост"
+msgstr "Delete"
+
 #: .\templates\post_delete.html:5
-#, fuzzy
 msgid "Удаление поста"
 msgstr "Write a post"
 
@@ -79,9 +86,12 @@ msgid "Удаляем"
 msgstr "Delete"
 
 #: .\templates\post_edit.html:5
-#, fuzzy
 msgid "Опубликовать пост"
-msgstr "Public a post"
+msgstr "Publish a post"
+
+#: .\templates\post_edit.html:10
+msgid "Опубликовать"
+msgstr "Publish"
 
 #: .\templates\posts.html:14
 msgid "Всего постов"
@@ -104,34 +114,17 @@ msgid "Автор"
 msgstr "Author"
 
 #: .\templates\search.html:33
-#, fuzzy
 msgid "Рейтинг поста"
 msgstr "Rating"
 
-#: .\templates\search.html:36
-#, fuzzy
-msgid "Изменить пост"
-msgstr "Edit post"
-
-#: .\templates\search.html:39
-#, fuzzy
-msgid "Удалить пост"
-msgstr "Delete post"
-
 #: .\templates\search.html:45
-#, fuzzy
-#| msgid "Будьте первым, кто опубликует пост!"
 msgid "Будьте первым, кто опубликует пост :)"
 msgstr "Be the first to post!"
 
 #: .\templates\subscriptions.html:17 .\templates\subscriptions.html:20
-#, fuzzy
-#| msgid "Написать пост"
 msgid "Подписаться"
 msgstr "Subcribe"
 
 #: .\templates\subscriptions.html:18 .\templates\subscriptions.html:21
-#, fuzzy
-#| msgid "Написать пост"
 msgid "Отписаться"
 msgstr "Unsubscribe"
