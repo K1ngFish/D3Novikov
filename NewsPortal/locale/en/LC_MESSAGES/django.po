@@ -36,7 +36,7 @@ msgstr "Article"
 #: .\NewsApp\models.py:56
 msgctxt "post"
 msgid "Тип поста"
-msgstr "Type of post"
+msgstr "Type"
 
 #: .\NewsApp\models.py:57
 msgctxt "post"
@@ -46,12 +46,12 @@ msgstr "Date of writing"
 #: .\NewsApp\models.py:59
 msgctxt "post"
 msgid "Рубрика поста"
-msgstr "Post category"
+msgstr "Category"
 
 #: .\NewsApp\models.py:60
 msgctxt "post"
 msgid "Заголовок поста"
-msgstr "Post title"
+msgstr "Title"
 
 #: .\NewsApp\models.py:61
 msgctxt "post"
@@ -70,11 +70,9 @@ msgid "Ошибка 403"
 msgstr "Error 403"
 
 #: .\templates\403.html:9
-msgid ""
-"У вас недостаточно прав для просмотра этой страницы. Пожалуйста, свяжитесь с "
+msgid "У вас недостаточно прав для просмотра этой страницы. Пожалуйста, свяжитесь с "
 "администратором :)"
-msgstr ""
-"You are not authorized to view this page. Please contact administartor :)"
+msgstr "You are not authorized to view this page. Please contact administartor :)"
 
 #: .\templates\category_list.html:12 .\templates\posts.html:12
 msgid "Новости и статьи"
@@ -142,7 +140,7 @@ msgstr "Publish"
 
 #: .\templates\posts.html:14
 msgid "Всего постов"
-msgstr "Total posts"
+msgstr "Posts"
 
 #: .\templates\posts.html:37
 msgid "Рейтинг"
