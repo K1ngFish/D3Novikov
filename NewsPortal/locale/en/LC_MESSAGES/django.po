@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-28 19:34+0300\n"
+"POT-Creation-Date: 2023-04-28 21:16+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,53 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\NewsApp\models.py:47
+msgctxt "post"
+msgid "Автор"
+msgstr "Author"
+
+#: .\NewsApp\models.py:52
+msgctxt "post"
+msgid "Новость"
+msgstr "News"
+
+#: .\NewsApp\models.py:53
+msgctxt "post"
+msgid "Статья"
+msgstr "Article"
+
+#: .\NewsApp\models.py:56
+msgctxt "post"
+msgid "Тип поста"
+msgstr "Type of post"
+
+#: .\NewsApp\models.py:57
+msgctxt "post"
+msgid "Дата создания"
+msgstr "Date of writing"
+
+#: .\NewsApp\models.py:59
+msgctxt "post"
+msgid "Рубрика поста"
+msgstr "Post category"
+
+#: .\NewsApp\models.py:60
+msgctxt "post"
+msgid "Заголовок поста"
+msgstr "Post title"
+
+#: .\NewsApp\models.py:61
+msgctxt "post"
+msgid "Текст"
+msgstr "Text"
+
+#: .\NewsApp\models.py:62
+#, fuzzy
+#| msgid "Рейтинг"
+msgctxt "post"
+msgid "Рейтинг"
+msgstr "Rating"
 
 #: .\templates\403.html:6
 msgid "Ошибка 403"

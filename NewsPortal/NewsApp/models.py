@@ -3,7 +3,8 @@ from django.contrib.auth.models import User
 from django.db.models import Sum
 from django.urls import reverse
 from django.core.validators import MinValueValidator
-
+from django.utils.translation import gettext_lazy as _
+from django.utils.translation import pgettext_lazy
 
 class Author (models.Model):
     authorUser = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -43,21 +44,22 @@ class Category(models.Model):
 
 
 class Post(models.Model):
-    author = models.ForeignKey(Author, on_delete=models.CASCADE, verbose_name='Автор')
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, verbose_name= pgettext_lazy('post', 'Автор'))
 
     NEWS = 'NW'
     ARTICLE = 'AR'
     CATEGORY_CHOICES = (
-        (NEWS, 'Новость'),
-        (ARTICLE, 'Статья')
+        (NEWS, pgettext_lazy('post', 'Новость')),
+        (ARTICLE, pgettext_lazy('post', 'Статья'))
     )
     category_type = models.CharField(max_length=2, choices=CATEGORY_CHOICES, default=ARTICLE,
-                                     verbose_name='Тип поста')
-    dateCreation = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
-    postCategory = models.ManyToManyField(Category, through='PostCategory', verbose_name='Рубрика поста')
-    title = models.CharField(max_length=128, verbose_name='Заголовок поста')
-    text = models.TextField(verbose_name='Текст')
-    rating = models.SmallIntegerField(default=0, verbose_name='Рейтинг')
+                                     verbose_name= pgettext_lazy('post', 'Тип поста'))
+    dateCreation = models.DateTimeField(auto_now_add=True, verbose_name= pgettext_lazy('post', 'Дата создания'))
+    postCategory = models.ManyToManyField(Category, through='PostCategory',
+                                          verbose_name= pgettext_lazy('post', 'Рубрика поста'))
+    title = models.CharField(max_length=128, verbose_name= pgettext_lazy('post', 'Заголовок поста'))
+    text = models.TextField(verbose_name= pgettext_lazy('post', 'Текст'))
+    rating = models.SmallIntegerField(default=0, verbose_name= pgettext_lazy('post', 'Рейтинг'))
 
     def __str__(self):
         return f'{self.title.title()}: {self.text[:100]}'
