@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-28 21:16+0300\n"
+"POT-Creation-Date: 2023-04-30 23:42+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -70,47 +70,49 @@ msgid "Ошибка 403"
 msgstr "Error 403"
 
 #: .\templates\403.html:9
-msgid "У вас недостаточно прав для просмотра этой страницы. Пожалуйста, свяжитесь с "
+msgid ""
+"У вас недостаточно прав для просмотра этой страницы. Пожалуйста, свяжитесь с "
 "администратором :)"
-msgstr "You are not authorized to view this page. Please contact administartor :)"
+msgstr ""
+"You are not authorized to view this page. Please contact administartor :)"
 
-#: .\templates\category_list.html:12 .\templates\posts.html:12
+#: .\templates\category_list.html:12 .\templates\posts.html:13
 msgid "Новости и статьи"
 msgstr "News and articles"
 
-#: .\templates\flatpages\default.html:10 .\templates\flatpages\default.html:20
+#: .\templates\flatpages\default.html:11 .\templates\flatpages\default.html:21
 msgid "Новостной портал"
 msgstr "News Portal"
 
-#: .\templates\flatpages\default.html:24
-msgid "Главная страница"
+#: .\templates\flatpages\default.html:25
+msgid "Главная"
 msgstr "Home"
 
-#: .\templates\flatpages\default.html:25
+#: .\templates\flatpages\default.html:26
 msgid "Поиск"
 msgstr "Search"
 
-#: .\templates\flatpages\default.html:27
-msgid "Написать пост"
+#: .\templates\flatpages\default.html:28
+msgid "Написать"
 msgstr "Write a post"
 
-#: .\templates\flatpages\default.html:35
+#: .\templates\flatpages\default.html:36
 msgid "Подписки"
 msgstr "Subscriptions"
 
-#: .\templates\flatpages\default.html:36
+#: .\templates\flatpages\default.html:37
 msgid "Сменить пароль"
 msgstr "Change password"
 
-#: .\templates\flatpages\default.html:38
-msgid "Выйти из аккаунта"
-msgstr "Log out"
+#: .\templates\flatpages\default.html:39
+msgid "Выйти"
+msgstr ""
 
-#: .\templates\flatpages\default.html:45
+#: .\templates\flatpages\default.html:46
 msgid "Войти"
 msgstr "Log in"
 
-#: .\templates\flatpages\default.html:46
+#: .\templates\flatpages\default.html:47
 msgid "Зарегистрироваться"
 msgstr "Sign up"
 
@@ -138,15 +140,19 @@ msgstr "Publish a post"
 msgid "Опубликовать"
 msgstr "Publish"
 
-#: .\templates\posts.html:14
+#: .\templates\posts.html:15
 msgid "Всего постов"
 msgstr "Posts"
 
-#: .\templates\posts.html:37
+#: .\templates\posts.html:19
+msgid "Часовой пояс"
+msgstr "Timezone"
+
+#: .\templates\posts.html:57
 msgid "Рейтинг"
 msgstr "Rating"
 
-#: .\templates\posts.html:57
+#: .\templates\posts.html:77
 msgid "Будьте первым, кто опубликует пост!"
 msgstr "Be the first to post!"
 
@@ -173,3 +179,6 @@ msgstr "Subcribe"
 #: .\templates\subscriptions.html:18 .\templates\subscriptions.html:21
 msgid "Отписаться"
 msgstr "Unsubscribe"
+
+#~ msgid "Выйти из аккаунта"
+#~ msgstr "Log out"

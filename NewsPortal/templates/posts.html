@@ -3,6 +3,7 @@
 {% load custom_filters %}
 {% load static %}
 {% load i18n %}
+{% load tz %}
 
 {% block title %}
 Posts
@@ -12,8 +13,27 @@ Posts
    <h2>{% trans 'Новости и статьи' %}</h2>
    <h3>{{ time_now|date:'M d Y' }}</h3>
    <h5>{% trans 'Всего постов' %}: {{ paginator.count }} </h5>
+      {% get_current_timezone as TIME_ZONE %}
+        <form action="" method="POST" style ='color: gray;'>
+        {% csrf_token %}
+        <label for="timezone">{% trans 'Часовой пояс' %}:</label>
+        <select name="timezone">
+            {% for tz in timezones %}
+            <option value="{{ tz }}" {% if tz == TIME_ZONE %} selected {% endif %}>{{ tz }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Set">
+    </form>
+        &nbsp;
+        <span style = "color: gray;"> {{ TIME_ZONE }} {{ current_time|timezone:TIME_ZONE }}</span>
+
+    {% for model in models %}
+    <div class = 'models-class'>
+         {{ model.name }}
+    </div>
+    {% endfor %}
    <!-- <h4> {{ open_vacancies|default_if_none:"Новые вакансии пока не появились!" }} </h4> -->
-   <hr>
+<hr>
 
 <style>
     table.text  {

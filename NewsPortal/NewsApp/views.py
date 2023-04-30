@@ -2,6 +2,7 @@ from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.views import View
 from django.urls import reverse_lazy
 from django.shortcuts import redirect, get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -10,6 +11,9 @@ from datetime import datetime
 from .models import Post, Category
 from .filters import PostFilter
 from .forms import PostForm
+
+from django.utils import timezone
+import pytz
 
 
 class PostsList(ListView):
@@ -21,35 +25,33 @@ class PostsList(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['time_now'] = datetime.utcnow()
+        context['time_now'] = timezone.now()
         context['open_vacancies'] = None
         return context
 
-class Index(PostsList):
-    def get(self, request):
-        posts = Post.objects.all()
-        context = {
-        'posts': posts,
-        }
-        return HttpResponse(render(request, 'posts.html', context))
+    def get(self, request, *args, **kwargs):
+        response = super().get(request, *args, **kwargs)
+        response.context_data['timezones'] = pytz.common_timezones
+        response.context_data['current_time'] = timezone.now()
+        return response
+
+    def post(self, request):
+        request.session['django_timezone'] = request.POST['timezone']
+        return redirect('posts_list')
+
+
+
+
 
     # def get_queryset(self):
-    #     # Получаем обычный запрос
     #    queryset = super().get_queryset()
-    #     # Используем наш класс фильтрации.
-    #     # self.request.GET содержит объект QueryDict, который мы рассматривали
-    #     # в этом юните ранее.
-    #     # Сохраняем нашу фильтрацию в объекте класса,
-    #     # чтобы потом добавить в контекст и использовать в шаблоне.
     #     self.filterset = PostFilter(self.request.GET, queryset)
-    #     # Возвращаем из функции отфильтрованный список товаров
     #     return self.filterset.qs
 
-#    def get_context_data(self, **kwargs):
-#        context = super().get_context_data(**kwargs)
-        # Добавляем в контекст объект фильтрации.
-#        context['filterset'] = self.filterset
-#        return context
+    # def get_context_data(self, **kwargs):
+    #    context = super().get_context_data(**kwargs)
+    #    context['filterset'] = self.filterset
+    #    return context
 
 
 class PostDetail(DetailView):

@@ -67,7 +67,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-]
+    'NewsApp.middlewares.TimezoneMiddleware',
+    ]
 
 ROOT_URLCONF = 'NewsPortal.urls'
 
