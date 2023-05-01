@@ -39,10 +39,6 @@ class PostsList(ListView):
         request.session['django_timezone'] = request.POST['timezone']
         return redirect('posts_list')
 
-
-
-
-
     # def get_queryset(self):
     #    queryset = super().get_queryset()
     #     self.filterset = PostFilter(self.request.GET, queryset)
